@@ -38,3 +38,15 @@ ECBC MAC is used in various applications, for example in banking systems (ANSI X
 2. NMAC (Nested MAC)
 Although fundamentally similar to the CBC-MAC which we talked about, NMAC uses a slightly different pseudorandom function F returning numbers that are correct values of secret keys and not of the data blocks.
 ![NMAC] (http://www.crypto-it.net/Images/theory/mac/nmac_eng.png "N-MAC")
+
+3. CMAC
+Under Construction
+
+4. HMAC
+Under Construction
+
+5. One Time MAC
+Under Construction
+
+6. Carter-Wegman MAC
+Under Construction
