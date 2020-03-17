@@ -40,11 +40,16 @@ Although fundamentally similar to the CBC-MAC which we talked about, NMAC uses a
 ![NMAC] (http://www.crypto-it.net/Images/theory/mac/nmac_eng.png "N-MAC")
 
 3. CMAC
-The CMAC algorithm is similar to CBC MAC in a way that it uses the same pseudorandom function F, which returns numbers that are elements of the set of all possible values of data blocks. However,instead of the last additional encryption that uses a second key, CMAC uses two additional keys that are added to input bits to the last block of F function. Depending on whether the last message block is completely filled up with data bits, or it must be filled up with a previously determined sequence of padding characters, the corresponding encryption key should be used.
+The CMAC algorithm is similar to CBC MAC in a way that it uses the same pseudorandom function F, which returns numbers that are elements of the set of all possible values of data blocks. However,instead of the last additional encryption that uses a second key, CMAC uses two additional keys that are added to input bits to the last block of F function. Depending on whether the last message block is completely filled up with data bits, or it must be filled up with a previously determined sequence of padding characters, the corresponding encryption key should be used. CMAC is considered to be secure providing a safe way for message authentication. 
 ![CMAC] (http://www.crypto-it.net/Images/theory/mac/cmac_eng.png)
 
 4. HMAC
-Under Construction
+HMAC is a popular system of checking message integrity quite similar to NMAC. It uses one-way hash functions to produce unique mac values.
+The way in which it functions is as follows:
+The input parameters *ipad* and *opad* are used to modify the secret key. It is recommended to choose the values that would make both inputs to the hash functions look as dissimilar as possible (that is, that modify the secret key in two different ways).
+Using a secure hash function guarantees the security of the HMAC algorithm.
+Uses of HMAC : SSL, IPSec, SSH etc
+![HMAC] (http://www.crypto-it.net/Images/theory/mac/hmac_eng.png)
 
 5. One Time MAC
 Under Construction
