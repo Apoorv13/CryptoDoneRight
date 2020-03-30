@@ -15,14 +15,14 @@ warnings:
     description: 
 
 best_practices:
-  - name: 
-    description:
+  - name: HMAC is generally one of the most widely implemented hash algorithm which constructs message authentication code from hash function.
+    description: Although it is proven it's reliability, HMAC is not one of the fastest mechanism out there
+  - name: Lately, MAC algorithms such as GMAC, VMAC and CMAC are implemented at production environments, attributing it's speed as one of the key factors.
+    description: 
+  
 
 ---
-Although we know that we can calculate hashes and verify the integrity of messages, have you ever wondered how is any message authenticated? This is a very real threat that existing cryptographic systems face. 
-This threat occurs when the user is not sure about the originator of the message. As a result, message authentication can be provided using cryptographic techniques that use secret keys as done in case of encryption.
-
-The aim of a message authentication code is to prevent an adversary from modifying a message sent by one party to another, without the parties de- tecting that a modification has been made. As in the case of encryption, such a task is only possible if the communicating parties have some secret that the adversary does not know (otherwise nothing can prevent an adversary from impersonating the party sending the message). The setting that we con- sider here therefore assumes that the parties share the same secret key. Since the parties share the same key, the notion of a message authentication code belongs to the world of private-key cryptography.
+The aim of a message authentication code is to prevent an adversary from modifying a message sent by one party to another, without the parties detecting that a modification has been made. As in the case of encryption, such a task is only possible if the communicating parties have some secret that the adversary does not know (otherwise nothing can prevent an adversary from impersonating the party sending the message). The setting that we consider here therefore assumes that the parties share the same secret key. Since the parties share the same key, the notion of a message authentication code belongs to the world of private-key cryptography.
 
 Loosely speaking, a message authentication code is an algorithm that is applied to a message. The output of the algorithm is a MAC tag (or just tag) that is sent along with the message. Security is formulated by requiring that no adversary can generate a valid MAC tag on any message that was not sent by the legitimate communicating parties.
 
@@ -32,6 +32,7 @@ CBC MAC is based on a pseudorandom function working similarly to encryption perf
 ![CBCMAC](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/CBC-MAC_structure_%28en%29.svg/2880px-CBC-MAC_structure_%28en%29.svg.png "CBC-MAC Scheme")
 
 CBC MAC can protect a message consisting of any length, spanning over multiple blocks. To ensure security, while using *CBC MAC one should change the secret periodically*. 
+
 Note: It can be proved that after sending the number of messages that is equal roughly to the square of the number of all possible values of data blocks, the key is no longer safe.
 ECBC MAC is used in various applications, for example in banking systems (ANSI X9.9, X9.19 and FIPS 186-3 standards). It is often based on the AES algorithm, that is used as F function.
 
@@ -51,8 +52,6 @@ Using a secure hash function guarantees the security of the HMAC algorithm.
 Uses of HMAC : SSL, IPSec, SSH etc
 ![HMAC] (http://www.crypto-it.net/Images/theory/mac/hmac_eng.png)
 
-5. One Time MAC
-Under Construction
 
-6. Carter-Wegman MAC
-Under Construction
+Additional Reading: 
+https://crypto.stackexchange.com/questions/52009/fastest-algorithm-for-message-authentication
