@@ -11,7 +11,7 @@ alerts:
 
 further-reading:
 
-related-articles:
+related-articles: "Check this related article"
 
 attacks:
 
