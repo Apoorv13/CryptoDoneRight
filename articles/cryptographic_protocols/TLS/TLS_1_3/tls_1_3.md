@@ -31,19 +31,11 @@ further-reading:
   - name: "TLSv1.3 0-RTT Vulnerabilites"
     link: "https://www.ssl.com/faqs/security-concerns-0-rtt-mode/"
 
-best-practices:
-  - name: Remove weak keys, cipher suites and hashes
-    description: Certificates contain public keys and signatures which could be vulnerable to attacks. Certificates with key lengths less than 2048 bits or that use older hashing algorithms like MD5 or SHA-1 are no longer permitted on public web servers. However, you might find these on your internal websites. If so, it’s vital that you upgrade them.
-  - name: Control wildcard certificate issuance and distribution
-    description: There are some concerns to be aware of with wildcard certificates. For one, if the private key of a wildcard certificate is stolen, attackers can then impersonate any system within that domain space. Another concern is that, if the wildcard is compromised, then you have to revoke and reissue all copies of the certificate at all locations where it has been installed. The more copies you have, the greater the headache.
-  - name: Deploy appropriate certificate types
-    description: While private TLS certificates can be used for internal systems, the private root must be successfully propagated to users. If you are securing a public site, we recommend either an OV or EV certificate. DV certificates are never recommended for sites transacting sensitive information.
-  - name: Ensure private keys arent used when certificates are renewed
-    description: Reusing private keys increases the risk of those keys being compromised.
-  - name: Use caa to prevent unauthorized certificate requests
-    description: The purpose of this is to allow domain owners to declare which CAs are allowed to issue a certificate for their domain. CAA also provides a way to receive notifications in case someone requests a certificate from an unauthorized CA.
-  - name: Check ct logs for rogue certificates
-    description: Any public certificate not logged in a public Certificate Transparency (CT) log will not be trusted by browsers. You can use a CT monitor to detect rogue certificates— much like a credit report—to quickly identify and remediate rogue certificates.
+best_practice:
+  - name: "Use 2048-Bit Private Keys"
+    description: "For most web sites, security provided by 2,048-bit RSA keys is sufficient. At 2,048 bits, such keys provide about 112 bits of security. To get 128 bits of security, you need 3,072-bit RSA keys, which are noticeably slower. ECDSA keys provide an alternative that offers better security and better performance. At 256 bits, ECDSA keys provide 128 bits of security. A small number of older clients don't support ECDSA, but modern clients do. It's possible to get the best of both worlds and deploy with RSA and ECDSA keys simultaneously if you don't mind the overhead of managing such a setup."
+  - name: "Use Strong Key Exchange"
+    description: "For the key exchange, public sites can typically choose between the classic ephemeral Diffie-Hellman key exchange (DHE) and its elliptic curve variant, ECDHE. There are other key exchange algorithms, but they're generally insecure in one way or another. The RSA key exchange is still very popular, but it doesn't provide forward secrecy."
 ---
 TLSv1.3 is the latest version of the Transport Layer Security, or TLS, protocol. This protocol was designed for securing internet traffic and is typically seen in client/server architectures like connecting to a website from a browser. It was officially made a standard by the IETF in 2018 as an improvement upon TLSv1.2, providing many security and performance enhancements.
 
