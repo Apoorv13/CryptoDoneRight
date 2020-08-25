@@ -21,7 +21,7 @@ alerts:
     link: ""
 further-reading:
 
-related-articles: "Check this"
+related-articles: 
 
 attacks:
 
