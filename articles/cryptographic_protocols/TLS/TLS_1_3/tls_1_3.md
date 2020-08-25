@@ -32,10 +32,7 @@ further-reading:
     link: "https://www.ssl.com/faqs/security-concerns-0-rtt-mode/"
 
 best_practice:
-  - name: "Use 2048-Bit Private Keys"
-    description: "For most web sites, security provided by 2,048-bit RSA keys is sufficient. At 2,048 bits, such keys provide about 112 bits of security. To get 128 bits of security, you need 3,072-bit RSA keys, which are noticeably slower. ECDSA keys provide an alternative that offers better security and better performance. At 256 bits, ECDSA keys provide 128 bits of security. A small number of older clients don't support ECDSA, but modern clients do. It's possible to get the best of both worlds and deploy with RSA and ECDSA keys simultaneously if you don't mind the overhead of managing such a setup."
-  - name: "Use Strong Key Exchange"
-    description: "For the key exchange, public sites can typically choose between the classic ephemeral Diffie-Hellman key exchange (DHE) and its elliptic curve variant, ECDHE. There are other key exchange algorithms, but they're generally insecure in one way or another. The RSA key exchange is still very popular, but it doesn't provide forward secrecy."
+  
 ---
 TLSv1.3 is the latest version of the Transport Layer Security, or TLS, protocol. This protocol was designed for securing internet traffic and is typically seen in client/server architectures like connecting to a website from a browser. It was officially made a standard by the IETF in 2018 as an improvement upon TLSv1.2, providing many security and performance enhancements.
 

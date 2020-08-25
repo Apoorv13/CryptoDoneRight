@@ -29,6 +29,14 @@ best_practice:
     description: "For most web sites, security provided by 2,048-bit RSA keys is sufficient. At 2,048 bits, such keys provide about 112 bits of security. To get 128 bits of security, you need 3,072-bit RSA keys, which are noticeably slower. ECDSA keys provide an alternative that offers better security and better performance. At 256 bits, ECDSA keys provide 128 bits of security. A small number of older clients don't support ECDSA, but modern clients do. It's possible to get the best of both worlds and deploy with RSA and ECDSA keys simultaneously if you don't mind the overhead of managing such a setup."
   - name: "Use Strong Key Exchange"
     description: "For the key exchange, public sites can typically choose between the classic ephemeral Diffie-Hellman key exchange (DHE) and its elliptic curve variant, ECDHE. There are other key exchange algorithms, but they're generally insecure in one way or another. The RSA key exchange is still very popular, but it doesn't provide forward secrecy."
+  - name: "Disable Compression"
+    description: "TLS compression should be disabled in order to protect against a vulnerability (nicknamed CRIME) which could potentially allow sensitive information such as session cookies to be recovered by an attacker"
+  - name: "Use TLS For All Pages"
+    description: "TLS should be used for all pages, not just those that are considered sensitive such as the login page. If there are any pages that do not enforce the use of TLS, these could give an attacker an opportunity to sniff sensitive information such as session tokens, or to inject malicious JavaScript into the responses to carry out other attacks against the user."
+  - name: "Prevent Caching of Sensitive Data"
+    description: "Although TLS provides protection of data while it is in transit, it does not provide any protection for data once it has reached the requesting system. As such, this information may be stored in the cache of the user's browser, or by any intercepting proxies which are configured to perform TLS decryption."
+  - name: "Consider Using Public Key Pinning"
+    description: "Public key pinning can be used to provides assurance that the server's certificate is not only valid and trusted, but also that it matches the certificate expected for the server. This provides protection against an attacker who is able to obtain a valid certificate, either by exploiting a weakness in the validation process, compromising a trusted certificate authority, or having administrative access to the client."
 
 ---
 <p id="nocryptoroll">

@@ -24,7 +24,12 @@ related-articles:
   - name: "RFC 8446: The Transport Layer Security (TLS) Protocol Version 1.3"
     link: https://docs.python.org/2/library/ssl.html
 best-practices:
-
+  - name: "Use Strong Key Exchange"
+    description: "For the key exchange, public sites can typically choose between the classic ephemeral Diffie-Hellman key exchange (DHE) and its elliptic curve variant, ECDHE. There are other key exchange algorithms, but they're generally insecure in one way or another. The RSA key exchange is still very popular, but it doesn't provide forward secrecy."
+  - name: "Disable Compression"
+    description: "TLS compression should be disabled in order to protect against a vulnerability (nicknamed CRIME) which could potentially allow sensitive information such as session cookies to be recovered by an attacker"
+  - name: "Patch Cryptographic Libraries"
+    description: "As well as the vulnerabilities in the SSL and TLS protocols, there have also been a large number of historic vulnerability in SSL and TLS libraries, with Heartbleed being the most well known. As such, it is important to ensure that these libraries are kept up to date with the latest security patches."
 ---
 <p id="GeneralTLSInfo">
 
