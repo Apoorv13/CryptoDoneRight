@@ -13,7 +13,62 @@ further-reading:
 related-articles:
 
 attacks:
+
+best-practices:
+  - name: Verify the encryption scheme again!
+    description: One of the most common issues that developers might face is due to logical issues while encryption and decryption. At times, it is notices that upon implementing AES-GCM layer, some extra bytes might be left as extra data after decryption. In this case, It might seem like encryption and decryption along with authentication or encryption of too much data might be happening, but turns out, it might also be because of encrypting the ciphertext second time. (And no, it wouldn't show as garbage output)
+  - name: Common issues while using the openssl library
+    description: OpenSSL has three families of functions for performing encryption and decryption. The first two of these (EVP_Encrypt* and EVP_Decrypt*) make it definitively hard to call the wrong function. However, the third form EVP_CipherInit_ex() has the exact same problem as the Java Crypto API and might be similar for encryption and decryption similar to java crypto API.
+  - name: Know the characteristics of your chosen algorithm, keep your keys safe, and always use a unique IV.
 ---
+
+<!-- <code>
+public static byte[] gcm_encrypt(byte[] plaintext, byte[] aad, SecretKey key, byte[] IV) throws Exception
+{
+   // Get Cipher Instance
+   Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+
+   // Create SecretKeySpec
+   SecretKeySpec keySpec = new SecretKeySpec(key.getEncoded(), "AES");
+
+   // Create GCMParameterSpec
+   GCMParameterSpec gcmParameterSpec = new GCMParameterSpec(GCM_TAG_LENGTH * 8, IV);
+
+   // Initialize Cipher for ENCRYPT_MODE
+   cipher.init(Cipher.ENCRYPT_MODE, keySpec, gcmParameterSpec);
+
+   // Process AAD
+   cipher.updateAAD(aad);
+​
+   // Perform Encryption
+   byte[] cipherText = cipher.doFinal(plaintext);
+
+   return cipherText;
+}
+​
+public static byte[] gcm_decrypt(byte[] cipherText, byte[] aad, SecretKey key, byte[] IV) throws Exception
+{
+   // Get Cipher Instance
+   Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+
+   // Create SecretKeySpec
+   SecretKeySpec keySpec = new SecretKeySpec(key.getEncoded(), "AES");
+
+   // Create GCMParameterSpec
+   GCMParameterSpec gcmParameterSpec = new GCMParameterSpec(GCM_TAG_LENGTH * 8, IV);
+
+   // Initialize Cipher for DECRYPT_MODE
+   cipher.init(Cipher.DECRYPT_MODE, keySpec, gcmParameterSpec);
+
+   // Process AAD
+   cipher.updateAAD(aad);
+​
+   // Perform Decryption
+   byte[] decryptedText = cipher.doFinal(cipherText);
+
+   return decryptedText;
+}
+</code> -->
 <p id="gcmintro">
 
   <h2> <img src="/static_files/common/configuration.jpg " style="width:110px;height:100px;" /> AES GCM Mode </h2>
